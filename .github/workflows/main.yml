@@ -2,7 +2,8 @@ name: Build Spring Boot App (Windows)
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
 
 jobs:
