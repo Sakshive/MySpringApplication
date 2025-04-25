@@ -36,13 +36,13 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Spring Apps
-        uses: azure/azure-spring-apps-deploy@v2
-        with:
-          app-name: mygithubaction   # Replace with your Azure Spring Apps instance name
-          resource-group: SakshiveRG  # Replace with your resource group name
-          plan-name: githubspring # Replace with your App Service plan name
-          deployment-package: target/*.jar
+      # - name: Deploy to Azure Spring Apps
+      #   uses: azure/azure-spring-apps-deploy@v2
+      #   with:
+      #     app-name: mygithubaction   # Replace with your Azure Spring Apps instance name
+      #     resource-group: SakshiveRG  # Replace with your resource group name
+      #     plan-name: githubspring # Replace with your App Service plan name
+      #     deployment-package: target/*.jar
 
       # - name: Deploy to Azure Spring Apps
       #   uses: azure/spring-apps-deploy@v1
