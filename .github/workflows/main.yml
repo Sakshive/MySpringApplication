@@ -31,10 +31,23 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-      - name: Deploy to Azure Spring Apps
-        uses: azure/spring-apps-deploy@v1
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
-          azure-subscription: d2a80d63-63c2-452d-9dcb-115ac8b2211a
-          service-name: mygithubaction
-          app-name: mygithubaction
-          package: target/*.jar
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Spring Apps
+        uses: azure/azure-spring-apps-deploy@v1
+        with:
+          app-name: mygithubaction   # Replace with your Azure Spring Apps instance name
+          resource-group: SakshiveRG  # Replace with your resource group name
+          plan-name: githubspring # Replace with your App Service plan name
+          deployment-package: target/*.jar
+
+      # - name: Deploy to Azure Spring Apps
+      #   uses: azure/spring-apps-deploy@v1
+      #   with:
+      #     azure-subscription: d2a80d63-63c2-452d-9dcb-115ac8b2211a
+      #     service-name: mygithubaction
+      #     app-name: mygithubaction
+      #     package: target/*.jar
